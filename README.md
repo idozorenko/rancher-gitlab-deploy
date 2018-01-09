@@ -161,11 +161,17 @@ Options:
   --finish-upgrade / --no-finish-upgrade
                                   Mark the upgrade as finished after it
                                   completes
+  --create / --no-create          Will create the Rancher stack
+                                  and service, if they are missed
+                                  (needs --new-image option)
   --help                          Show this message and exit.
 
 ```
 
 ## History
+
+#### [1.6] - 2018-01-09
+Add `--create` option to create Rancher stack and service, if they are missed
 
 #### [1.5] - 2017-11-25
 Fixed UnicodeError bug with authentication, thank you to @evilmind for the fix

@@ -60,6 +60,8 @@ def main(rancher_url, rancher_key, rancher_secret, environment, stack, service, 
 
     proto, host = rancher_url.split("://")
     api = "%s://%s/v1" % (proto, host)
+    stack = stack.replace('.', '-')
+    service = service.replace('.', '-')
 
     # 0 -> Authenticate all future requests
     session = requests.Session()

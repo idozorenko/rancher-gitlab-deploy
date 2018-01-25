@@ -132,17 +132,12 @@ Options:
                                   into (only needed if you are using an
                                   account API key instead of an environment
                                   API key)
-  --stack TEXT                    The name of the stack in Rancher (defaults
-                                  to the name of the group in GitLab)
+  --stack TEXT                    The name of the stack in Rancher
                                   [required]
-  --sidekicks/--no-sidekicks      Upgrade service sidekicks at the same time?
-                                  Defaults to not upgrading sidekicks
-  --new-sidekick-image NAME IMAGE If specified, replace the named sidekick image
-                                  (and :tag) with this one during the upgrade.
-                                  This flag can be used more than once.
-  --service TEXT                  The name of the service in Rancher to
-                                  upgrade (defaults to the name of the service
-                                  in GitLab)  [required]
+  --docker-compose TEXT           Name of docker-compose file 
+                                  to create stack from [required].
+  --upgrade-service TEXT          The name of the service in Rancher to
+                                  upgrade [required]. This flag can be used more than once.
   --start-before-stopping / --no-start-before-stopping
                                   Should Rancher start new containers before
                                   stopping the old ones?
@@ -156,14 +151,9 @@ Options:
   --wait-for-upgrade-to-finish / --no-wait-for-upgrade-to-finish
                                   Wait for Rancher to finish the upgrade
                                   before this tool exits
-  --new-image TEXT                If specified, replace the image (and :tag)
-                                  with this one during the upgrade
   --finish-upgrade / --no-finish-upgrade
                                   Mark the upgrade as finished after it
                                   completes
-  --create / --no-create          Will create the Rancher stack
-                                  and service, if they are missed
-                                  (needs --new-image option)
   --help                          Show this message and exit.
 
 ```
@@ -171,7 +161,7 @@ Options:
 ## History
 
 #### [1.6] - 2018-01-09
-Add `--create` option to create Rancher stack and service, if they are missed
+Added `--docker-compose` option to create new stack. `--service` option changed to `--upgrade-service` option (multiple options allowed). Docker command changed from `upgrade` to `deploy`. 
 
 #### [1.5] - 2017-11-25
 Fixed UnicodeError bug with authentication, thank you to @evilmind for the fix
